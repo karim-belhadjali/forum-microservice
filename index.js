@@ -4,9 +4,15 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const Eureka = require('eureka-js-client').Eureka;
+const eurekaConfig = require('./eureka-config');
 
 const path = require('path');
 dotenv.config({ path: path.resolve(__dirname, '.env') });
+
+
+
+
 
 const app = express();
 app.use(bodyParser.json());
@@ -18,7 +24,9 @@ const forumRoutes = require('./routes/forum');
 
 app.use('/api/forum', forumRoutes);
 
-const MONGODB_URI = 'mongodb://admin:admin_password@localhost:27017/forum-db?authSource=admin';
+const MONGODB_URI = 'mongodb://localhost:27017/forumdb';
+
+
 
 mongoose.connect(MONGODB_URI, {
     useNewUrlParser: true,
@@ -39,4 +47,7 @@ mongoose.connection.on('disconnected', () => {
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
+    client.getInstancesByAppId('NODEAPP', (error, instances) => {
+        console.log(instances);
+    });
 });

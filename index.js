@@ -56,7 +56,7 @@ setTimeout(() => {
             console.log(instances);
         });
     });
-}, 5000);
+}, 60000);
 
 
 

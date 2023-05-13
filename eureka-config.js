@@ -2,10 +2,10 @@
 module.exports = {
     instance: {
         app: 'nodeapp',
-        instanceId: `nodeapp:${process.env.HOSTNAME || 'localhost'}:${process.env.PORT}`,
+        instanceId: `nodeapp:${process.env.HOSTNAME || 'localhost'}:3000`,
         hostName: process.env.HOSTNAME || 'localhost',
         ipAddr: process.env.HOSTNAME || '127.0.0.1',
-        statusPageUrl: `http://${process.env.HOSTNAME || 'localhost'}:${process.env.PORT}/info`,
+        statusPageUrl: `http://${process.env.HOSTNAME || 'localhost'}:3000/info`,
         port: {
             $: process.env.PORT,
             '@enabled': 'true',
